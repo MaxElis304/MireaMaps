@@ -1,0 +1,70 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="{% static 'Authorization/css/register.css' %}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css">
+    <script type="text/javascript" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"></script>
+    <script type="text/javascript" href="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</head>
+<body>
+    <div class="wrapper">
+        <form action="{% url 'register' %}" method="post">
+            {% csrf_token %}
+            <div class="h5 font-weight-bold text-center mb-3">Регистрация</div>
+            <div class="form-group d-flex align-items-center">
+                <div class="icon"><span class="far fa-user"></span></div>
+                <input autocomplete="off" name="username" type="text" class="form-control" placeholder="Name" >
+            </div>
+            <div class="form-group d-flex align-items-center">
+                <div class="icon"><span class="fas fa-users"></span></div>
+                <input autocomplete="off" name="user_group" type="text" class="form-control" placeholder="Group">
+            </div>
+            <div class="form-group d-flex align-items-center">
+                <div class="icon"><span class="fas fa-key"></span></div>
+                <input autocomplete="new-password" name="password1" ID="pwd1" type="password" class="form-control" placeholder="Password" readonly onfocus="this.removeAttribute('readonly');">
+                <button type="button"   onclick="togglePasswordVisibility()" class="icon btn"><span id="eyeIcon" class="fas fa-eye-slash"></span></button>
+            </div>
+            <div class="form-group d-flex align-items-center">
+                <div class="icon"><span class="fas fa-key"></span></div>
+                <input autocomplete="off" name="password2" type="password" class="form-control" placeholder="Confirm password">
+            </div>
+            <div class="mb-2">
+                <label class="option">Запомнить меня
+                    <input type="checkbox" checked>
+                    <span class="checkmark"></span>
+                </label>
+            </div>
+
+            <script>
+                function togglePasswordVisibility() {
+                    var passwordField = document.getElementById('pwd1');
+                    var eyeIcon = document.getElementById('eyeIcon');
+
+                    if (passwordField.type === 'password') {
+                        passwordField.type = 'text';
+                        eyeIcon.classList.remove('fa-eye-slash');
+                        eyeIcon.classList.add('fa-eye');
+                    } else {
+                        passwordField.type = 'password';
+                        eyeIcon.classList.remove('fa-eye');
+                        eyeIcon.classList.add('fa-eye-slash');
+                    }
+                }
+            </script>
+            <button type="submit" class="btn btn-primary mb-3" >Зарегистрироваться</button>
+            <div class="btn btn-primary mb-3">
+                <a href="{% url 'login' %}">Войти в аккаунт</a>
+            </div>
+            <div class="error-message">
+                {{ form.errors }}
+            </div>
+        </form>
+    </div>
+</body>
+</html>
+

@@ -1,0 +1,45 @@
+{% extends "admin/base_site.html" %}
+
+{% block extrastyle %}
+    {{ block.super }}
+    <style>
+        #header {
+            background: #373737;
+            border-bottom: 1px solid #999;
+        }
+        #user-tools {
+            background: #373737;
+        }
+        #user-tools a, #user-tools a:hover {
+            color: #ccc;
+        }
+        #user-tools a:focus {
+            color: #fff;
+        }
+        #branding h1 a, #branding h1 a:hover {
+            color: #fff;
+        }
+        #custom-admin-links {
+            background: #373737;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+        #custom-admin-links a, #custom-admin-links a:hover {
+            color: #fff;
+            margin-right: 10px;
+            font-weight: bold;
+        }
+    </style>
+{% endblock %}
+
+{% block nav-global %}{% endblock %}
+{% block breadcrumbs %}{% endblock %}
+{% block content_title %}{% endblock %}
+{% block content %}
+    <div id="custom-admin-links">
+        <a href="{% url 'admin-panel' %}">Admin Panel</a>
+        <!-- Добавьте другие ссылки по необходимости -->
+    </div>
+    {{ block.super }}
+{% endblock %}
+

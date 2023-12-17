@@ -1,0 +1,66 @@
+<!-- admin/templates/admin/adminpanel.html -->
+
+{% extends 'admin/base_site.html' %}
+
+{% block content %}
+  <h1>Добро пожаловать в панель администратора</h1>
+
+  <form method="get" action="{% url 'admin-panel' %}">
+    <!-- Поля для поиска и фильтрации -->
+    <!-- Пример: -->
+    <select name="filter" id="filterSelect">
+      <option value="user" {% if filter_value == 'user' %}selected{% endif %}>User</option>
+      <option value="classroom" {% if filter_value == 'classroom' %}selected{% endif %}>Classroom</option>
+    </select>
+
+    {% if filter_value == 'user' %}
+        <!-- Фильтры для пользователя -->
+        <select name="user_filter" id="userFilterSelect">
+            <option value="is_admin" {% if user_filter_value == 'is_admin' %}selected{% endif %}>Админ</option>
+            <option value="is_staff" {% if user_filter_value == 'is_staff' %}selected{% endif %}>Персонал</option>
+            <option value="is_user" {% if user_filter_value == 'is_user' %}selected{% endif %}>Пользователь</option>
+        </select>
+
+        {% if user_filter_value == 'is_admin' %}
+            <select name="user_filter2" id="userFilter2Select">
+                <option value="2_days" {% if user_filter_value2 == '2_days' %}selected{% endif %}>Менее 2 дней назад</option>
+                <option value="4_days" {% if user_filter_value2 == '4_days' %}selected{% endif %}>Менее 4 дней назад</option>
+            </select>
+        {% elif user_filter_value == 'is_staff' %}
+            <select name="user_filter2" id="userFilter2Select">
+                <option value="2_days" {% if user_filter_value2 == '2_days' %}selected{% endif %}>Менее 2 дней назад</option>
+                <option value="4_days" {% if user_filter_value2 == '4_days' %}selected{% endif %}>Менее 4 дней назад</option>
+            </select>
+        {% elif user_filter_value == 'is_user' %}
+            <select name="user_filter2" id="userFilter2Select">
+                <option value="2_days" {% if user_filter_value2 == '2_days' %}selected{% endif %}>Менее 2 дней назад</option>
+                <option value="4_days" {% if user_filter_value2 == '4_days' %}selected{% endif %}>Менее 4 дней назад</option>
+            </select>
+        {% endif %}
+    {% endif %}
+
+    {% if filter_value == 'classroom' %}
+      <!-- Фильтры для аудитории -->
+        <select name="classroom_filter" id="classroomFilterSelect">
+            <option value="low_attendance" {% if classroom_filter_value == 'low_attendance' %}selected{% endif %}>Низкая посещаемость</option>
+            <option value="medium_attendance" {% if classroom_filter_value == 'medium_attendance' %}selected{% endif %}>Средняя посещаемость</option>
+            <option value="high_attendance" {% if classroom_filter_value == 'high_attendance' %}selected{% endif %}>Высокая посещаемость</option>
+        </select>
+    {% endif %}
+
+    <button type="submit">Search</button>
+  </form>
+
+  <!-- Отображение данных -->
+  <ul>
+    {% for item in items %}
+      <li>
+        {% if filter_value == 'user' %}
+          {{ item.username }}
+        {% elif filter_value == 'classroom' %}
+          {{ item.classroom_title }}
+        {% endif %}
+      </li>
+    {% endfor %}
+  </ul>
+{% endblock %}

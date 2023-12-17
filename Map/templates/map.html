@@ -1,0 +1,241 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE-edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Интерактивная карта РТУ МИРЭА</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="{% static 'Map/css/map.css' %} ">
+    <script src="{% static 'Map/js/map.js' %}" defer></script>
+</head>
+<header class="mb-auto">
+        <div class="header_map">
+          <h3 class="float-md-start mb-0 " style="font-size: 34px">MireaMap</h3>
+          <nav class="nav nav-masthead justify-content-center float-md-end">
+              <a class="nav-link fw-bold py-1 px-0" aria-current="page" href="{% url 'main' %}">Главная</a>
+              <a class="nav-link fw-bold py-1 px-0 active" href="#">Поиск</a>
+              <a class="nav-link fw-bold py-1 px-0" href="{% url 'profile' %}">Профиль</a>
+              <a class="nav-link fw-bold py-1 px-0" href="{% url 'about' %}">О нас</a>
+          </nav>
+        </div>
+</header>
+<body>
+    <div class="wrapper">
+        <div class="map__wrapper">
+            <svg viewBox="0 0 1024 768">
+                {% for classroom in classroom1%}
+                    <path data-title="{{ classroom.classroom_title}}"   data-description="Человек в аудитории: {{ classroom.classroom_pops }}
+                                        Преподаватель: {{ classroom.cur_teacher }}
+                                        Группы: {{ classroom.cur_groups }}" class="aud" d="M 73.312282,73.626253 H 166.24777 V 206.12211 h -24.80373 v -5.65148 H 97.488067 v 5.65148 h -24.33277 z"></path>
+                {% endfor %}
+                {% for classroom in classroom2%}
+                    <path data-title="{{ classroom.classroom_title}}"  data-description="Человек в аудитории: {{ classroom.classroom_pops }}
+                                        Преподаватель: {{ classroom.cur_teacher }}
+                                        Группы: {{ classroom.cur_groups }}" class="aud"  d="m 177.07977,73.626253 h 86.34209 V 206.12211 h -21.35004 v -5.65148 h -43.79899 v 5.65148 h -21.35004 z"></path>
+                {% endfor %}
+                {% for classroom in classroom3%}
+                    <path data-title="{{ classroom.classroom_title}}"   data-description="Человек в аудитории: {{ classroom.classroom_pops }}
+                                        Преподаватель: {{ classroom.cur_teacher }}
+                                        Группы: {{ classroom.cur_groups }}" class="aud" d="m 273.98766,73.65959 h 97.88758 v 132.68482 h -26.50445 v -5.85374 h -43.74046 v 5.85374 h -27.31746 z"></path>
+                {% endfor %}
+                {% for classroom in classroom4%}
+                    <path data-title="{{ classroom.classroom_title}}"   data-description="Человек в аудитории: {{ classroom.classroom_pops }}
+                                        Преподаватель: {{ classroom.cur_teacher }}
+                                        Группы: {{ classroom.cur_groups }}" class="aud" d="m 379.84283,73.496986 h 94.6355 V 206.18181 h -26.17924 v -5.20333 h -43.57785 v 5.20333 h -25.20362 z"></path>
+                {% endfor %}
+                {% for classroom in classroom5%}
+                    <path data-title="{{ classroom.classroom_title}}"   data-description="Человек в аудитории: {{ classroom.classroom_pops }}
+                                        Преподаватель: {{ classroom.cur_teacher }}
+                                        Группы: {{ classroom.cur_groups }}" class="aud" d="m 559.03707,74.492292 149.55937,0.114958 0.14531,132.02442 -15.60712,0.16257 0.0813,-5.36494 H 649.4022 v 5.6088 l -90.06604,-0.0813 z"></path>
+                {% endfor %}
+                {% for classroom in classroom6%}
+                    <path data-title="{{ classroom.classroom_title}}"   data-description="Человек в аудитории: {{ classroom.classroom_pops }}
+                                        Преподаватель: {{ classroom.cur_teacher }}
+                                        Группы: {{ classroom.cur_groups }}" class="aud" d="m 717.1956,74.377646 88.68416,0.08129 -0.087,132.521574 h -21.78439 l 0.0575,-5.80534 -44.14358,0.2874 0.11495,5.51794 -22.53162,-0.11495 z"></path>
+                {% endfor %}
+                {% for classroom in classroom7%}
+                    <path data-title="{{ classroom.classroom_title}}"   data-description="Человек в аудитории: {{ classroom.classroom_pops }}
+                                        Преподаватель: {{ classroom.cur_teacher }}
+                                        Группы: {{ classroom.cur_groups }}" class="aud" d="m 813.78231,74.377335 149.67433,0.114957 0.11496,132.660658 -77.36623,-0.22992 -0.11495,-5.86281 -44.02863,0.22991v 5.86282 l -28.04956,-0.34487 z"></path>
+                {% endfor %}
+                {% for classroom in classroom8%}
+                    <path data-title="{{ classroom.classroom_title}}" data-description="Человек в аудитории: {{ classroom.classroom_pops }}
+                                        Преподаватель: {{ classroom.cur_teacher }}
+                                        Группы: {{ classroom.cur_groups }}" class="aud" d="m 73.483489,298.89246 67.305671,0.32515 -0.0813,14.06266 h -4.22692l 0.0813,37.06689 4.22692,-0.0813 v 81.36833 H 73.320915 Z"></path>
+                {% endfor %}
+                {% for classroom in classroom9%}
+                    <path data-title="{{ classroom.classroom_title}}"   data-description="Человек в аудитории: {{ classroom.classroom_pops }}
+                                        Преподаватель: {{ classroom.cur_teacher }}
+                                        Группы: {{ classroom.cur_groups }}" class="aud" d="m 273.20576,300.03048 h 202.32345 v 63.81033 H 273.44962 v -12.19305 h 3.98306 v -36.98561 h -4.06435 z"></path>
+                {% endfor %}
+                {% for classroom in classroom10%}
+                    <path data-title="{{ classroom.classroom_title}}"   data-description="Человек в аудитории: {{ classroom.classroom_pops }}
+                                        Преподаватель: {{ classroom.cur_teacher }}
+                                        Группы: {{ classroom.cur_groups }}" class="aud" d="m 273.48328,367.40334 h 202.09483 v 63.68632 h -202.4397 v -14.94445 h 3.90854 v -37.01623 h -4.0235 z"></path>
+                {% endfor %}
+                {% for classroom in classroom11%}
+                    <path data-title="{{ classroom.classroom_title}}" data-description="Человек в аудитории: {{ classroom.classroom_pops }}
+                                        Преподаватель: {{ classroom.cur_teacher }}
+                                        Группы: {{ classroom.cur_groups }}" class="aud" d="M 561.45117,299.80849 V 432.46914 H 628.5862 V 299.57857 h -13.33504 v 5.74786 H 571.5674 v -5.51794 z"></path>
+                {% endfor %}
+                {% for classroom in classroom12%}
+                    <path data-title="{{ classroom.classroom_title}}"   data-description="Человек в аудитории: {{ classroom.classroom_pops }}
+                                        Преподаватель: {{ classroom.cur_teacher }}
+                                        Группы: {{ classroom.cur_groups }}" class="aud" d="m 649.52027,300.04357 h -9.47324 v 132.28098 h 67.69065 v -131.9365 h -14.12375 l 0.0861,6.2868 -43.92142,0.0861 z"></path>
+                {% endfor %}
+                {% for classroom in classroom13%}
+                    <path data-title="{{ classroom.classroom_title}}"  data-description="Человек в аудитории: {{ classroom.classroom_pops }}
+                                        Преподаватель: {{ classroom.cur_teacher }}
+                                        Группы: {{ classroom.cur_groups }}" class="aud" d="m 809.01531,299.69909 h 153.29436 v 132.7977 h -153.4666 v -13.95151 h 4.47826 v -36.85954 h -4.47826 z"></path>
+                {% endfor %}
+                {% for classroom in classroom14%}
+                    <path data-title="{{ classroom.classroom_title}}"  data-description="Человек в аудитории: {{ classroom.classroom_pops }}
+                                        Преподаватель: {{ classroom.cur_teacher }}
+                                        Группы: {{ classroom.cur_groups }}" class="aud" d="m 484.26661,299.7368 h 67.53513 v 132.68667 h -68.13102 z"></path>
+                {% endfor %}
+            </svg>
+            <img src="{% static 'Map/img/svg-editor-image.svg' %}" alt="Карта">
+
+        </div>
+    </div>
+    <div class="info__bg">
+        <div class="info">
+            <h2 class="info__title">
+
+            </h2>
+            <p class="info__text">
+
+            </p>
+        </div>
+    </div>
+    <div class="tooltip"></div>
+    <label for="search-input"></label><input type="text" id="search-input" placeholder="Поиск по аудиториям">
+    <div id="search-results">
+    </div>
+
+    <style>
+        #search-input {
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin: 0 auto;
+            display: block;
+        }
+
+        #search-results {
+            overflow-y: auto;
+            max-height: 300px;
+            scrollbar-color: #888 #f5f5f5; /* Цвет полосы прокрутки и фона */
+            scrollbar-width: thin; /* Ширина полосы прокрутки */
+        }
+
+        .search_res {
+            padding: 10px;
+            margin-left: 45%;
+            margin-right: 45%;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.5s;
+            text-align: center;
+            block-size: border-box;
+        }
+
+        .search_res:hover {
+            background-color: #89f3f3;
+        }
+        .aud.selected {
+            animation: highlight2 2s linear infinite;
+        }
+
+        @keyframes highlight2 {
+            0%{
+                fill: black;
+                fill-opacity: 0.3;
+            }
+            50%{
+                fill: red;
+                fill-opacity: 0.3;
+            }
+            100%{
+                fill: black;
+                fill-opacity: 0.3;
+            }
+        }
+
+        #search-results::-webkit-scrollbar {
+            width: 12px; /* Ширина полосы прокрутки */
+        }
+
+        #search-results::-webkit-scrollbar-thumb {
+            background-color: #888; /* Цвет полосы прокрутки */
+            border-radius: 6px; /* Закругление углов полосы прокрутки */
+        }
+
+        #search-results::-webkit-scrollbar-track {
+            background-color: #f5f5f5; /* Цвет фона полосы прокрутки */
+        }
+
+    </style>
+
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#search-input').on('input', function () {
+                var query = $(this).val();
+                if (query.trim() === '') {
+                    // Если запрос пуст, очищаем результаты и выходим
+                    $('#search-results').empty();
+                    return;
+                }
+               $.ajax({
+                    url: '{% url 'map' %}',
+                    type: 'GET',
+                    data: { 'query': query },
+                    dataType: 'json',  // Указываем, что ожидаем JSON в ответе
+                    success: function (data) {
+                // Очищаем текущие результаты
+                        $('#search-results').empty();
+
+                        // Обновляем DOM с новыми результатами
+                        data.classrooms.forEach(function (classroom) {
+                            $('#search-results').append('<div class="search_res" data-title="' + classroom.classroom_title + '" data-description="' + classroom.classroom_pops + ' ' + classroom.cur_teacher + ' ' + classroom.cur_groups + '">' + classroom.classroom_title + '</div>');
+                        });
+                        $('#search-results').on('click', '.search_res', function () {
+                            // Обработка клика по результату поиска
+                            $('.aud').removeClass('selected');
+
+                            // Получаем информацию о выбранной аудитории
+                            var selectedAudTitle = $(this).data('title');
+
+                            // Находим соответствующий элемент на карте
+                            var selectedAud = $('.aud[data-title="' + selectedAudTitle + '"]');
+
+
+                            selectedAud.addClass('selected');
+
+                            // Ваш код для обработки клика, например:
+                            let popupBG = document.querySelector('.info__bg');
+                            let popup = document.querySelector('.info');
+                            popup.querySelector('.info__title').innerText = selectedAud.data('title');
+                            popup.querySelector('.info__text').innerText = selectedAud.data('description');
+                            popupBG.classList.add('active');
+
+                        });
+                        $(document).on('click', function (event) {
+                            if (!$(event.target).closest('.search_res').length) {
+                                // Если клик был вне .search_res, снимаем выделение
+                                $('.aud').removeClass('selected');
+                            }
+                        });
+                    }
+               });
+            });
+        });
+    </script>
+</body>
+</html>

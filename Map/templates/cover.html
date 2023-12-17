@@ -1,0 +1,25 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>User List</title>
+    <link rel="stylesheet" href="{% static 'Map/css/cover.css' %}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css">
+    <script type="text/javascript" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"></script>
+    <script type="text/javascript" href="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</head>
+<body>
+<div id="animatedText" class="typing">
+    <h2 class="text-uppercase">Creating..</h2>
+</div>
+<script>
+    // Ожидаем завершения анимации и перенаправляем пользователя
+    const animatedText = document.getElementById('animatedText');
+    animatedText.addEventListener('animationend', function () {
+        // Здесь вы можете добавить код для перехода на другую страницу
+        window.location.href = 'authorization/login';
+    });
+</script>
+</body>
+</html>

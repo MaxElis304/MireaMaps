@@ -1,0 +1,39 @@
+digraph PageMovement {
+  // Узлы (страницы)
+  login [label="Вход"]
+  register [label="Регистрация"]
+  admin [label="Администрирование"]
+  cover [label="Заставка"]
+  main [label="Главная"]
+  map [label="Карта и поиск"]
+  profile [label="Профиль"]
+  security [label="Настройки безопасности"]
+  about_us [label="О нас"]
+
+  // Рёбра (перемещение между страницами)
+  cover -> login
+  login -> register
+  register -> login
+  login -> main
+  register -> main
+  admin -> main
+  main -> map
+  main -> profile
+  main -> about_us
+  map -> main
+  map -> profile
+  map -> about_us
+  profile -> main
+  profile -> map
+  profile -> about_us
+  profile -> security
+  profile -> login
+  security -> main
+  security -> map
+  security -> about_us
+  security -> profile
+  security -> login
+  about_us -> main
+  about_us -> map
+  about_us -> profile
+}

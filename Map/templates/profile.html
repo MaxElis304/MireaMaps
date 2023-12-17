@@ -1,0 +1,215 @@
+{% load static %}
+<!doctype html>
+<html lang="en" class="h-100" xmlns:xlink="">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="MaxElis">
+    <meta name="generator" content="Hugo 0.104.2">
+    <title>MireaMap</title>
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css">
+    <script type="text/javascript" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"></script>
+    <script type="text/javascript" href="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.2/examples/cover/">
+
+
+
+
+
+<link href="{% static 'Map/css/profile.css' %}" rel="stylesheet">
+
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+
+      .b-example-divider {
+        height: 3rem;
+        background-color: rgba(0, 0, 0, .1);
+        border: solid rgba(0, 0, 0, .15);
+        border-width: 1px 0;
+        box-shadow: inset 0 .5em 1.5em rgba(0, 0, 0, .1), inset 0 .125em .5em rgba(0, 0, 0, .15);
+      }
+
+      .b-example-vr {
+        flex-shrink: 0;
+        width: 1.5rem;
+        height: 100vh;
+      }
+
+      .bi {
+        vertical-align: -.125em;
+        fill: currentColor;
+      }
+
+      .nav-scroller {
+        position: relative;
+        z-index: 2;
+        height: 2.75rem;
+        overflow-y: hidden;
+      }
+
+      .nav-scroller .nav {
+        display: flex;
+        flex-wrap: nowrap;
+        padding-bottom: 1rem;
+        margin-top: -1px;
+        overflow-x: auto;
+        text-align: center;
+        white-space: nowrap;
+        -webkit-overflow-scrolling: touch;
+      }
+    </style>
+
+
+    <!-- Custom styles for this template -->
+  </head>
+  <body class="d-flex h-100 text-bg-dark">
+    <div class="d-flex flex-column flex-shrink-0 p-3 text-bg-dark" style="width: 280px;">
+        <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+          <svg class="bi pe-none me-2" width="40" height="32"><use xlink:href="#bootstrap"></use></svg>
+          <span class="fs-4">Профиль</span>
+        </a>
+        <hr>
+        <ul class="nav nav-pills flex-column mb-auto">
+          <li class="nav-item">
+            <a href="#" class="nav-link active" aria-current="page">
+              <svg class="bi pe-none me-2" width="16" height="16" ><use xlink:href="#"></use></svg>
+              Профиль
+            </a>
+          </li>
+          <li>
+            <a href="{% url 'security' %}" class="nav-link text-white">
+              <svg class="bi pe-none me-2 fa-align-left" width="16" height="16"><use xlink:href="#"></use></svg>
+              Безопасность
+            </a>
+          </li>
+          <li>
+            <a href="{% url 'logout' %}" class="nav-link text-white">
+              <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#table"></use></svg>
+              Выйти
+            </a>
+          </li>
+        </ul>
+    </div>
+    <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+      <header class="mb-auto">
+        <div>
+          <h3 class="float-md-start mb-0">MireaMap</h3>
+          <nav class="nav nav-masthead justify-content-center float-md-end">
+              <a class="nav-link fw-bold py-1 px-0" aria-current="page" href="{% url 'main' %}">Главная</a>
+              <a class="nav-link fw-bold py-1 px-0" href="{% url 'map' %}">Поиск</a>
+              <a class="nav-link fw-bold py-1 px-0 active" href="#">Профиль</a>
+              <a class="nav-link fw-bold py-1 px-0" href="{% url 'about' %}">О нас</a>
+          </nav>
+        </div>
+      </header>
+
+      <main class="px-3">
+          <div class="user-info">
+            <p class="lead">Ник пользователя: {{ user.username }}</p>
+            <p class="lead">Группа: {{ user.user_group }}</p>
+            </div>
+            <div class="user-edit">
+                <h2>Редактировать профиль</h2>
+                <form method="post">
+                    {% csrf_token %}
+                    <div class="form-group d-flex align-items-center">
+                        <div class="icon"><span class="far fa-user"></span></div>
+                        <input autocomplete="off" name="username" type="text" class="form-control" placeholder="Имя пользователя"
+                               value="{{ user.username }}" required>
+                    </div>
+                    <div class="form-group d-flex align-items-center">
+                        <div class="icon"><span class="fas fa-key"></span></div>
+                        <input autocomplete="off" name="user_group" type="text" class="form-control" placeholder="Группа"
+                            value="{{ user.user_group }}" required>
+                    </div>
+
+                    <button type="submit">Сохранить изменения</button>
+                </form>
+            </div>
+      </main>
+
+      <footer class="mt-auto text-white-50">
+        <p>Course Work. Eliseev Maksim. All Rights Reserved.</p>
+      </footer>
+    </div>
+
+
+
+  </body>
+</html>
+
+<style>
+    .user-info {
+        background-color: #f8f9fa;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        margin-bottom: 20px;
+    }
+
+    .user-info p {
+        font-size: 20px;
+        margin: 10px 0;
+        color: black;
+        font-weight: bold;
+    }
+
+    .user-edit {
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .user-edit h2 {
+        font-size: 24px;
+        margin-bottom: 20px;
+    }
+
+    .form-group {
+        margin-bottom: 20px;
+    }
+
+    .form-group .icon {
+        color: ;
+        border-radius: 4px;
+        padding: 10px;
+        margin-right: 10px;
+        display: flex;
+        align-items: center;
+    }
+
+    .form-control {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+    }
+
+    button {
+        background-color: #28a745;
+        color: #fff;
+        padding: 10px 15px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
+    button:hover {
+        background-color: #218838;
+    }
+</style>

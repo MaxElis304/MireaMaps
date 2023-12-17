@@ -1,0 +1,171 @@
+*{
+    box-sizing: border-box;
+}
+
+.nav-masthead .nav-link {
+  color: rgba(0, 0, 0, 0.8);
+  border-bottom: .25rem solid transparent;
+}
+
+.nav-masthead .nav-link:hover,
+.nav-masthead .nav-link:focus {
+  border-bottom-color: rgba(0, 0, 0, 0.25);
+    color: black;
+}
+
+.nav-link {
+    font-size: 20px;
+}
+
+.nav-masthead .nav-link + .nav-link {
+  margin-left: 1rem;
+}
+
+.header_map {
+    width: 50%;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.nav-masthead .active {
+  color: rgba(0, 0, 0, 0.78);
+  border-bottom-color: #000000;
+}
+
+
+body::-webkit-scrollbar {
+    width: 12px; /* Ширина полосы прокрутки */
+}
+
+body::-webkit-scrollbar-thumb {
+    background-color: #595959; /* Цвет полосы прокрутки */
+    border-radius: 6px; /* Закругление углов полосы прокрутки */
+}
+
+body::-webkit-scrollbar-track {
+    background-color: #f5f5f5; /* Цвет фона полосы прокрутки */
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Monsterrat', sans-serif ;
+    scrollbar-color: #888 #f5f5f5; /* Цвет полосы прокрутки и фона */
+    scrollbar-width: thin; /* Ширина полосы прокрутки */
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+.wrapper {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.map__wrapper{
+    max-width: 1200px;
+    position: relative;
+}
+
+.map__wrapper svg{
+    position: absolute;
+    top: -2px;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.aud {
+    fill: none;
+    stroke: black;
+    stroke-width: 2px;
+    cursor: pointer;
+    pointer-events: all;
+}
+
+.aud:hover{
+    animation: highlight 2s linear infinite;
+}
+
+
+@keyframes highlight {
+    0%{
+        stroke: black;
+    }
+    50%{
+        stroke: red;
+    }
+    100%{
+        stroke: black;
+    }
+}
+
+.tooltip{
+    position: absolute;
+    left: 0;
+    top: 0;
+    padding: 5px;
+    background: #FFFFFF;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.4) ;
+}
+
+.info__bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    transition: 0.3s all;
+    pointer-events: none;
+    z-index: 10;
+}
+
+.info__bg.active {
+    pointer-events: all;
+    opacity: 1;
+    transition: 0.3s all;
+}
+
+.info {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #FFFFFF;
+    border-radius: 20px;
+    padding: 25px;
+    width: 500px;
+}
+
+/* Добавьте стили для поля поиска */
+#search-input {
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+/* Стили для результатов поиска */
+.search_res {
+    padding: 10px;
+    margin-bottom: 5px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    cursor: pointer; /* Делаем курсор поинтером при наведении */
+    transition: background-color 0.3s;
+}
+
+/* Стили для выделения элемента при наведении */
+.search_res:hover {
+    background-color: #f0f0f0;
+}
+
