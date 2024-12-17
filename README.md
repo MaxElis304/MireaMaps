@@ -76,37 +76,38 @@ quadrantChart
     "Изменение данных пользователя": [0.45, 0.7]
     "Оценка теста": [0.5, 0.8]
 ```
+
+
+
 ```mermaid
 gitGraph
     commit id: "Начальный коммит"
-    
     branch develop
     commit id: "Инициализация проекта"
-    
-    branch feature/UI
+    branch feature/UI-1
     commit id: "Начало работы над интерфейсом"
     commit id: "Добавлены основные страницы интерфейса"
     checkout develop
-    merge feature/UI id: "Слияние интерфейса в develop"
-    
+    merge feature/UI-1 id: "Слияние интерфейса в develop"
+    commit id: "Тестирование"
     branch feature/Auth
     commit id: "Начало работы над авторизацией"
     commit id: "Добавлена регистрация и авторизация"
     checkout develop
     merge feature/Auth id: "Слияние авторизации в develop"
-    
-    branch feature/UI
+    commit id: "Тестирование_2"
+    branch feature/UI-2
     commit id: "Начало работы над правками интерфейса"
     commit id: "Исправления в интерфейсе"
     checkout develop
-    merge feature/UI id: "Слияние правок интерфейса в develop"
-    
+    merge feature/UI-2 id: "Слияние правок интерфейса в develop"
+    commit id: "Тестирование_3"
     branch feature/payment
     commit id: "Начало работы над системой оплаты"
     commit id: "Интегрирована система оплаты"
     checkout develop
     merge feature/payment id: "Слияние системы оплаты в develop"
-    
+    commit id: "Финальное тестирование"
     checkout main
     merge develop id: "Перенос готового функционала в main"
     commit id: "Финальная версия"
